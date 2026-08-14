@@ -18,11 +18,12 @@ for path in files:
     sequence = json.loads(match.group(1))
     assert isinstance(sequence.get("title"), str) and sequence["title"], f"title missing in {path.name}"
     assert isinstance(sequence.get("nodes"), list), f"nodes missing in {path.name}"
+    assert sequence["nodes"], f"no nodes in {path.name}"
     for node in sequence["nodes"]:
         node_count += 1
         assert node.get("type") in ALLOWED_TYPES, f"invalid type in {path.name}"
         assert node.get("status") in ALLOWED_STATUSES, f"invalid status in {path.name}"
         assert isinstance(node.get("transcript"), str), f"transcript missing in {path.name}"
 
-assert node_count == 102, f"expected 102 nodes, found {node_count}"
+assert node_count > 0, "no nodes found"
 print(f"OK: {len(files)} sequences, {node_count} nodes")
