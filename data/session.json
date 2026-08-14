@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "sessionId": "ytt100-session-1",
+  "title": "YTT Cue Cards",
+  "description": "Pose cues, linking cues and teaching context from the session transcript.",
+  "sequenceFiles": [
+    "seq01.json",
+    "seq02.json",
+    "seq03.json",
+    "seq04.json",
+    "seq05.json",
+    "seq06.json",
+    "seq07.json",
+    "seq08.json",
+    "seq09.json",
+    "seq10.json",
+    "seq11.json"
+  ]
+}
