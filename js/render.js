@@ -31,6 +31,39 @@ function renderNames(node) {
   return names;
 }
 
+function renderFocusPicker(session, selectedSequenceId, onFocusChange) {
+  const nav = createElement("nav", "focus-picker");
+  nav.setAttribute("aria-label", "Choose a flow to focus on");
+
+  const label = createElement("label", "focus-picker__label", "Focus on");
+  label.htmlFor = "flow-focus";
+
+  const select = createElement("select", "focus-picker__select");
+  select.id = "flow-focus";
+
+  const allOption = createElement("option", null, "All flows");
+  allOption.value = "all";
+  select.append(allOption);
+
+  for (const sequence of session.sequences) {
+    const option = createElement("option", null, sequence.title);
+    option.value = sequence.id;
+    select.append(option);
+  }
+
+  const validSelection = selectedSequenceId === "all" || session.sequences.some(
+    (sequence) => sequence.id === selectedSequenceId
+  );
+  select.value = validSelection ? selectedSequenceId : "all";
+
+  select.addEventListener("change", (event) => {
+    onFocusChange(event.target.value);
+  });
+
+  nav.append(label, select);
+  return nav;
+}
+
 export function renderNode(node) {
   const article = createElement("article", `card card--${node.type}`);
 
@@ -62,10 +95,18 @@ export function renderSequence(sequence) {
   return section;
 }
 
-export function renderApp(container, session) {
-  container.replaceChildren();
+export function renderApp(container, session, options = {}) {
+  const selectedSequenceId = options.selectedSequenceId ?? "all";
+  const onFocusChange = options.onFocusChange ?? (() => {});
 
-  for (const sequence of session.sequences) {
+  container.replaceChildren();
+  container.append(renderFocusPicker(session, selectedSequenceId, onFocusChange));
+
+  const sequences = selectedSequenceId === "all"
+    ? session.sequences
+    : session.sequences.filter((sequence) => sequence.id === selectedSequenceId);
+
+  for (const sequence of sequences) {
     container.append(renderSequence(sequence));
   }
 }
