@@ -163,7 +163,7 @@ h1 {
 
 .card--context {
   background: var(--context-bg);
-  border-color: var(--context-line);
+  border: 2px dashed var(--context-line);
   box-shadow: none;
 }
 
