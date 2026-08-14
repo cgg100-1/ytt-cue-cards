@@ -67,10 +67,6 @@ function renderFocusPicker(session, selectedSequenceId, onFocusChange) {
 export function renderNode(node) {
   const article = createElement("article", `card card--${node.type}`);
 
-  const head = createElement("div", "card__head");
-  head.append(createElement("span", `card__status card__status--${node.status}`, node.status));
-  article.append(head);
-
   article.append(renderNames(node));
   article.append(createElement("div", "card__cue", node.cue));
 
