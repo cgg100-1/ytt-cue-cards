@@ -16,21 +16,29 @@ function renderReviewNote(note) {
   return details;
 }
 
+function renderNames(node) {
+  if (node.type !== "pose") {
+    return createElement("div", "card__english", node.label);
+  }
+
+  const names = createElement("div", "card__names");
+  names.append(createElement("div", "card__english", node.label));
+
+  if (node.pose?.sanskrit) {
+    names.append(createElement("div", "card__sanskrit", node.pose.sanskrit));
+  }
+
+  return names;
+}
+
 export function renderNode(node) {
   const article = createElement("article", `card card--${node.type}`);
 
   const head = createElement("div", "card__head");
-  head.append(
-    createElement("span", "card__kind", node.type),
-    createElement("span", `card__status card__status--${node.status}`, node.status)
-  );
+  head.append(createElement("span", `card__status card__status--${node.status}`, node.status));
   article.append(head);
 
-  if (node.type === "pose" && node.pose?.sanskrit) {
-    article.append(createElement("div", "card__sanskrit", node.pose.sanskrit));
-  }
-
-  article.append(createElement("div", "card__english", node.label));
+  article.append(renderNames(node));
   article.append(createElement("div", "card__cue", node.cue));
 
   const review = renderReviewNote(node.source?.reviewNote);
