@@ -1,0 +1,294 @@
+{
+  "id": "opening-warm-up",
+  "title": "Opening / Warm-up",
+  "nodes": [
+    {
+      "id": "opening-warm-up-centring-body-awareness",
+      "type": "context",
+      "label": "Centring / body awareness",
+      "cue": "Ask. By bringing your awareness to the body on the mat. Noticing the weight. The bones. The head… Shoulders. The elbows, the wrists… The backs of the hands. Feeling the weight of the hips. The weight of the thighs. The calf muscle was touching the floor. And heels. Give the weight of your body to the floor and the earth beneath it. Feeling a sense of being supported and uplifted. And being present to this moment in time. Soften the skin across your forehead. And notice the sensation as you do that. Relax the jaw behind the ears. And bring your attention to the tip of your nose as you notice the body breathing. Try to keep your awareness for a few seconds at the tip of your nose, concentrating. One pointed focus. Be curious to know the sensation. At the tip of your nose. Do your best to concentrate on this point. For a few seconds longer. Notice where your mind has gone and just bring it back. So the concentration at the tip of the nose.",
+      "status": "clear",
+      "source": {
+        "start": "10:14:40",
+        "end": "10:16:02",
+        "reviewNote": ""
+      }
+    },
+    {
+      "id": "opening-warm-up-head-roll",
+      "type": "pose",
+      "label": "Head Roll",
+      "cue": "And now we're going to begin our postures, so taking a deep breath into body, and a slow, patient exhale out, beginning with our head roll, inhale, and as you exhale, rolling your head to. Inhale to the centre, rolling your head to the left. Inhale center. Exhale to the right. Inhale to the center, and rolling your head to the left. Do this one more time, really noticing the weight of the skull as it moves across the floor, the sensation that feels like… Last time to that left side.",
+      "status": "clear",
+      "source": {
+        "start": "10:16:04",
+        "end": "10:16:30",
+        "reviewNote": ""
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Head Roll"
+      }
+    },
+    {
+      "id": "opening-warm-up-pelvic-tilt",
+      "type": "pose",
+      "label": "Pelvic Tilt",
+      "cue": "And then when you're ready, coming back to a neutral position. Bring the sole of the feet to the floor. So starting here with the pelvic tilt, so imagining the pelvis like a bowl, squeeze the belly in, feet hip-width apart, firmly planted on the mat. As you squeeze the belly in, feel the. hollow out the belly, scoop the sit bones up off the floor, and then roll the sit bones back down. Let's do this three more times, and if you were teaching this and you wanted to incorporate the breath, you exhale to hollow out the belly and lift the hips, and then you inhale to place the lower back down. Last time, you.",
+      "status": "clear",
+      "source": {
+        "start": "10:16:31",
+        "end": "10:17:01",
+        "reviewNote": "Includes transition bringing soles of feet to floor."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Pelvic Tilt"
+      }
+    },
+    {
+      "id": "opening-warm-up-easy-gentle-twist",
+      "type": "pose",
+      "label": "Easy / Gentle Twist",
+      "cue": "Coming into an easy twist, the feet stay where they are, we're gonna just take the legs over to. Inhale the knees to the center, and taking the legs to the left-hand side. Inhale to the center, exhaling the knees to the right, rolling onto the edges of the feet, coming back to the center, and rolling the knees to the left on the edges of the feet. Coming back to the center, this time incorpor. Inhaling up to the center, knees go to the left, head goes to the right. Inhale center, one more time each side, knees going one way, head going the other way.",
+      "status": "clear",
+      "source": {
+        "start": "10:17:01",
+        "end": "10:17:27",
+        "reviewNote": ""
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Easy / Gentle Twist"
+      }
+    },
+    {
+      "id": "opening-warm-up-single-knee-to-chest-right",
+      "type": "pose",
+      "label": "Single Knee-to-Chest — Right",
+      "cue": "And you can notice as soon as you incorporate the cervical spine that the twist gets a little bit deeper. Then coming back to a neutral position, Parama Pasana is next. So extending your legs along the floor, and then bend the right knee into the chest, interlace the hands around the right knee where the knee and the shin meet, and draw the right knee out and down towards the right.",
+      "status": "check",
+      "source": {
+        "start": "10:17:27",
+        "end": "10:17:44",
+        "reviewNote": "Transcript Sanskrit is garbled."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Single Knee-to-Chest — Right"
+      }
+    },
+    {
+      "id": "opening-warm-up-single-knee-to-chest-left",
+      "type": "pose",
+      "label": "Single Knee-to-Chest — Left",
+      "cue": "Inhale again, and exhale as you pull. Keep the chin slightly down, the back of the neck long, right side first, and then release. Lifting up the left leg next, remembering always to go right side, left side, and then we'll do both sides in a minute. But pulling this left knee down towards. Inhale, use the bicep strength, exhale as you pull. Back of the neck, nice.",
+      "status": "check",
+      "source": {
+        "start": "10:17:44",
+        "end": "10:18:01",
+        "reviewNote": "Begins with side-change link."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Single Knee-to-Chest — Left"
+      }
+    },
+    {
+      "id": "opening-warm-up-knees-to-chest-hug",
+      "type": "pose",
+      "label": "Knees-to-Chest / Hug",
+      "cue": "And then releasing that left leg down, bringing both legs up, time to give yourself a hug. As you wrap your arms over the top of the knees, the head stays on the floor. If it feels uncomfortable, pop a little book or a brick underneath your head. Try to pull the knees in towards the chest, breathing. As you breathe, have a matasana. One more deep breath, pull those knees in, printing your spine down into the mat.",
+      "status": "check",
+      "source": {
+        "start": "10:18:01",
+        "end": "10:18:20",
+        "reviewNote": "Transcript pose name unclear."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Knees-to-Chest / Hug"
+      }
+    },
+    {
+      "id": "opening-warm-up-yogi-bicycle",
+      "type": "pose",
+      "label": "Yogi Bicycle",
+      "cue": "And then slowly release. Bring the soles of the feet to the floor for a moment. We're setting up for what we call our yogi bicycle, which is for our abdominals. So lifting the feet off the floor, we can flex the feet, the knees above the hips, the calves parallel. Bring the fingers to the ears like you're wearing headphones. Hollow. Exhale, extend the right leg, right elbow to left knee. Knees together, inhale. Exhale, left elbow, right knee. Inhale, knees together. Exhale, opposite side. Let's do one more each side, really squeezing in the belly, really keeping that knee above that hip, not cheating by bringing the knee too far in. Good, and then slowly releasing the head to the floor. So from here, we're gonna.",
+      "status": "clear",
+      "source": {
+        "start": "10:18:20",
+        "end": "10:18:55",
+        "reviewNote": "Includes set-up."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Yogi Bicycle"
+      }
+    },
+    {
+      "id": "opening-warm-up-eye-of-the-needle-reclined-figure-four-right",
+      "type": "pose",
+      "label": "Eye of the Needle / Reclined Figure Four — Right",
+      "cue": "So taking the right foot along the left thigh, so Suchi Randrasana, so right foot along the left thigh, flexing that right foot and then lifting up the left leg if available to you, interlace the hands around that left thigh and bringing the left knee in, having a nice tight grip, drawing the left knee in, relax your shoulders down and push your right knee.",
+      "status": "check",
+      "source": {
+        "start": "10:18:56",
+        "end": "10:19:11",
+        "reviewNote": "Standard Sanskrit supplied from previous pose list."
+      },
+      "pose": {
+        "sanskrit": "Sucirandhrasana",
+        "english": "Eye of the Needle / Reclined Figure Four — Right"
+      }
+    },
+    {
+      "id": "opening-warm-up-eye-of-the-needle-reclined-figure-four-left",
+      "type": "pose",
+      "label": "Eye of the Needle / Reclined Figure Four — Left",
+      "cue": "Breathing here, feeling a stretch in that right hip, gently easing the knees in opposite directions, keeping the head on the floor, relaxing the shoulders, relax the neck, one more breath, remember to breathe, the more you breathe the more benefit you gain, and let's switch sides, soles of the feet back down, outside edge of left ankle or foot along the. So for me, in this one, I really feel like I borrowed someone else's leg. On the left-hand side, it's super tight compared to the right. So just breathe into the area that you feel it the most, and remember it's not always possible for everyone to interlace their hands, or even lift that leg off the floor. Let's go one more breath.",
+      "status": "check",
+      "source": {
+        "start": "10:19:11",
+        "end": "10:19:41",
+        "reviewNote": "Begins with ongoing right-side cues then side-change."
+      },
+      "pose": {
+        "sanskrit": "Sucirandhrasana",
+        "english": "Eye of the Needle / Reclined Figure Four — Left"
+      }
+    },
+    {
+      "id": "opening-warm-up-rock-and-roll-to-all-fours",
+      "type": "link",
+      "label": "Rock and roll to all fours",
+      "cue": "And then, releasing the left leg down. So I was in a hurry to get up into the next posture, which we're gonna rock and roll into Cat Cow. So hands come around the back of the thighs, start to rock and roll along your spine, inhaling forward, exhaling back. How. Last one.",
+      "status": "clear",
+      "source": {
+        "start": "10:19:41",
+        "end": "10:19:54",
+        "reviewNote": ""
+      }
+    },
+    {
+      "id": "opening-warm-up-cat-cow",
+      "type": "pose",
+      "label": "Cat–Cow",
+      "cue": "And we're gonna cross our feet, step forward, and then come onto all fours. So, the wrists underneath the shoulders, and the knees underneath the hips for Cat-Cow. So, dropping the belly, lifting the chest, lifting the sit bones, breathe in. As you breathe out.",
+      "status": "check",
+      "source": {
+        "start": "10:19:54",
+        "end": "10:20:07",
+        "reviewNote": ""
+      },
+      "pose": {
+        "sanskrit": "Marjaryasana–Bitilasana",
+        "english": "Cat–Cow"
+      }
+    },
+    {
+      "id": "opening-warm-up-bird-dog-opposite-arm-and-leg-right",
+      "type": "pose",
+      "label": "Bird-Dog / Opposite Arm and Leg — Right",
+      "cue": "exhale round the back squeeze everything push into the hands inhale dropping the belly sit bones lift them apart exhale squeeze everything tight coming back to a neutral position take your right leg out behind you fists are fire and your left arm comes forward inhale and as you exhale elbow to knee inhale to expand and stretch exhale elbow to knee inh.",
+      "status": "check",
+      "source": {
+        "start": "10:20:07",
+        "end": "10:20:23",
+        "reviewNote": "Begins with final Cat–Cow cue."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Bird-Dog / Opposite Arm and Leg — Right"
+      }
+    },
+    {
+      "id": "opening-warm-up-bird-dog-opposite-arm-and-leg-left",
+      "type": "pose",
+      "label": "Bird-Dog / Opposite Arm and Leg — Left",
+      "cue": "exhale let's do two more breathe in and breathe out last one inhale expand exhale curl everything in come back to a neutral position and let's just change sides left leg goes back behind you right arm forward inhale exhale elbow to knee inhale to reach forward.",
+      "status": "check",
+      "source": {
+        "start": "10:20:23",
+        "end": "10:20:34",
+        "reviewNote": "Includes side-change."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Bird-Dog / Opposite Arm and Leg — Left"
+      }
+    },
+    {
+      "id": "opening-warm-up-downward-facing-dog",
+      "type": "pose",
+      "label": "Downward-Facing Dog",
+      "cue": "Exhale squeeze everything in, inhale, exhale squeeze everything in, inhale and exhale squeeze everything in. Good coming back to a neutral position, working our way into downward facing dog so curling the toes under, sitting the hips towards the heels, really press down through the palms of the hands, spread the fingers wide, lift up the knees, use the power. Relaxing the chest down, let's start by pedaling out our dogs, bending one knee as we straighten the other, left and right and left and right, loosening everything up, noticing how your body feels today, knowing that every day is a little bit different. And then come to find stillness in your downward facing dog, spreading the fingers, lifting the hips high, heels.",
+      "status": "check",
+      "source": {
+        "start": "10:20:34",
+        "end": "10:21:05",
+        "reviewNote": "Includes transition into pose."
+      },
+      "pose": {
+        "sanskrit": "Adho Mukha Svanasana",
+        "english": "Downward-Facing Dog"
+      }
+    },
+    {
+      "id": "opening-warm-up-walk-feet-to-hands-ragdoll",
+      "type": "link",
+      "label": "Walk feet to hands / ragdoll",
+      "cue": "Armpits talking to each other, long spine, remember to bend your knees as much as you need to to keep the integrity in the spine and downward dog stretching all the way through the spine, the shoulders, the hamstrings, the calf muscles. Okie dokie, now we're going to walk our feet up behind our hands, open the feet hip distance and grab the opp.",
+      "status": "clear",
+      "source": {
+        "start": "10:21:05",
+        "end": "10:21:21",
+        "reviewNote": ""
+      }
+    },
+    {
+      "id": "opening-warm-up-standing-forward-fold-ragdoll",
+      "type": "pose",
+      "label": "Standing Forward Fold / Ragdoll",
+      "cue": "Let your head relax.",
+      "status": "check",
+      "source": {
+        "start": "10:21:22",
+        "end": "10:21:24",
+        "reviewNote": ""
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Standing Forward Fold / Ragdoll"
+      }
+    },
+    {
+      "id": "opening-warm-up-roll-up-to-standing",
+      "type": "link",
+      "label": "Roll up to standing",
+      "cue": "And then from here, we can keep our arms, um, like a little frame around our head as we step our vertebrae, one at a time, coming all the way up to standing, and then releasing the arms down alongside the body, stepping the feet together, preparing for indudalasana, so our sideways bend. Inhale the arms up above your head, grab your left wrist with your right hand.",
+      "status": "clear",
+      "source": {
+        "start": "10:21:24",
+        "end": "10:21:40",
+        "reviewNote": ""
+      }
+    },
+    {
+      "id": "opening-warm-up-standing-side-bend",
+      "type": "pose",
+      "label": "Standing Side Bend",
+      "cue": "over to the right-hand side. So trying not to, um, arch the back or banana the back, keep the lower ribs in, pushing your hips. And then come back up to the center, switch the hand position, make sure the palms are facing up, breathe in, and breathe out, come over to the left, pushing your hips to the right, left hip forward, right shoulder forward, keeping everything very square, one more breath, into Dalasana.",
+      "status": "check",
+      "source": {
+        "start": "10:21:40",
+        "end": "10:21:58",
+        "reviewNote": "Transcript Sanskrit is unclear."
+      },
+      "pose": {
+        "sanskrit": null,
+        "english": "Standing Side Bend"
+      }
+    }
+  ]
+}
