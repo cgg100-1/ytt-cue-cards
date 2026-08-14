@@ -1,31 +1,41 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f5f6f8"><title>YTT Cue Cards</title>
-<style>
-:root{--bg:#f5f6f8;--panel:#eceff2;--card:#fff;--text:#20242b;--muted:#6b7280;--line:#d6dbe2;--link:#f8f9fb;--context:#f1f2f3}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-header{position:sticky;top:0;z-index:10;background:rgba(245,246,248,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:18px 16px 14px}.wrap{max-width:980px;margin:auto}h1{font-size:24px;margin:0;letter-spacing:-.03em}.sub{font-size:13px;color:var(--muted);margin-top:5px}
-main{max-width:980px;margin:auto;padding:14px 12px 40px}.sequence{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:18px}.sequence h2{font-size:17px;margin:2px 2px 11px;letter-spacing:-.02em}.cards{display:flex;flex-direction:column;gap:9px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;box-shadow:0 1px 2px rgba(0,0,0,.035)}.card.link{background:var(--link);border-style:dashed;margin-left:14px}.card.context{background:var(--context);border-style:dotted}.card-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
-.kind,.status{font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:var(--muted)}.status{border:1px solid var(--line);border-radius:999px;padding:3px 6px;letter-spacing:.07em}.sanskrit{font-size:17px;font-weight:800;line-height:1.2}.english{font-size:13px;color:var(--muted);font-weight:600;margin-top:2px}.card.link .english,.card.context .english{font-size:15px;color:var(--text);font-weight:750}.cue{margin-top:11px;padding-top:10px;border-top:1px solid #eceff2;font-size:14px;line-height:1.5}.review{margin-top:10px;color:var(--muted);font-size:11px}.review summary{cursor:pointer;font-weight:700}.review div{margin-top:6px;line-height:1.4}
-footer{max-width:980px;margin:auto;padding:0 16px 32px;color:var(--muted);font-size:11px}@media(min-width:760px){main{padding:22px 18px 46px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.card.link,.card.context{grid-column:1/-1;margin-left:0}}
-</style></head><body>
-<header><div class="wrap"><h1>YTT Cue Cards</h1><div class="sub">Pose cues, linking cues and teaching context from the session transcript.</div></div></header>
-<main id="app"></main><footer>Draft: items marked “check” or “blank” still need validation.</footer>
-<script>window.YTT_DATA=[];</script>
-<script src="data/seq01.js"></script>
-<script src="data/seq02.js"></script>
-<script src="data/seq03.js"></script>
-<script src="data/seq04.js"></script>
-<script src="data/seq05.js"></script>
-<script src="data/seq06.js"></script>
-<script src="data/seq07.js"></script>
-<script src="data/seq08.js"></script>
-<script src="data/seq09.js"></script>
-<script src="data/seq10.js"></script>
-<script src="data/seq11.js"></script>
-<script>
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-document.getElementById("app").innerHTML=YTT_DATA.map(seq=>`<section class="sequence"><h2>${esc(seq.title)}</h2><div class="cards">${seq.nodes.map(n=>`<article class="card ${esc(n.type.toLowerCase())}"><div class="card-head"><span class="kind">${esc(n.type)}</span><span class="status ${esc(n.status)}">${esc(n.status)}</span></div>${n.sanskrit?`<div class="sanskrit">${esc(n.sanskrit)}</div>`:""}<div class="english">${esc(n.english)}</div><div class="cue">${esc(n.transcript)}</div>${n.note?`<details class="review"><summary>Review note</summary><div>${esc(n.note)}</div></details>`:""}</article>`).join("")}</div></section>`).join("");
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f6f8">
+  <meta name="description" content="Yoga teacher training cue cards">
+  <title>YTT Cue Cards</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="page-width">
+      <h1>YTT Cue Cards</h1>
+      <p class="subtitle">Pose cues, linking cues and teaching context from the session transcript.</p>
+    </div>
+  </header>
+
+  <main id="app" class="app" aria-live="polite">
+    <p class="loading">Loading cue cards…</p>
+  </main>
+
+  <footer class="site-footer">
+    Draft: items marked “check” or “blank” still need validation.
+  </footer>
+
+  <script>window.YTT_DATA = [];</script>
+  <script src="data/seq01.js"></script>
+  <script src="data/seq02.js"></script>
+  <script src="data/seq03.js"></script>
+  <script src="data/seq04.js"></script>
+  <script src="data/seq05.js"></script>
+  <script src="data/seq06.js"></script>
+  <script src="data/seq07.js"></script>
+  <script src="data/seq08.js"></script>
+  <script src="data/seq09.js"></script>
+  <script src="data/seq10.js"></script>
+  <script src="data/seq11.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
