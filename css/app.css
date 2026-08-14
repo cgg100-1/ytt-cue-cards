@@ -1,12 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600;700&display=swap");
+
 :root {
-  --bg: #f5f6f8;
-  --panel: #eceff2;
-  --card: #ffffff;
-  --text: #20242b;
-  --muted: #6b7280;
-  --line: #d6dbe2;
-  --link: #f8f9fb;
-  --context: #f1f2f3;
+  --ash-grey: #adbca5;
+  --powder-blush: #e8b9ab;
+  --light-coral: #e09891;
+  --sweet-peony: #cb769e;
+  --smoky-rose: #8c5f66;
+
+  --bg: #fbf8f6;
+  --panel: #f5efec;
+  --card: #fffdfc;
+  --text: #2f292a;
+  --muted: #766b6d;
+  --line: #e5d8d3;
+  --pose-line: #d7c7c2;
+  --link-bg: #fcf7fa;
+  --context-bg: #f3f5f1;
+  --context-line: #adbca5;
+
+  --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "DM Serif Display", Georgia, serif;
 }
 
 * { box-sizing: border-box; }
@@ -17,134 +30,172 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
+  font-size: 16px;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 18px 16px 14px;
-  background: rgba(245, 246, 248, 0.94);
+  padding: 18px 18px 15px;
+  background: rgba(251, 248, 246, 0.94);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(140, 95, 102, 0.18);
 }
 
 .page-width,
 .app,
 .site-footer {
-  max-width: 980px;
+  width: min(100%, 760px);
   margin: 0 auto;
 }
 
 h1 {
   margin: 0;
-  font-size: 24px;
-  letter-spacing: -0.03em;
+  color: var(--smoky-rose);
+  font-family: var(--font-display);
+  font-size: 29px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 .subtitle,
 .loading {
-  margin: 5px 0 0;
+  margin: 4px 0 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 13.5px;
+  line-height: 1.45;
 }
 
-.app { padding: 14px 12px 40px; }
+.app { padding: 18px 12px 44px; }
 
 .sequence {
-  margin-bottom: 18px;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  margin-bottom: 24px;
+  padding: 13px;
+  border: 1px solid rgba(140, 95, 102, 0.14);
+  border-radius: 18px;
   background: var(--panel);
 }
 
 .sequence__title {
-  margin: 2px 2px 11px;
-  font-size: 17px;
-  letter-spacing: -0.02em;
+  margin: 3px 4px 14px;
+  color: var(--smoky-rose);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
 }
 
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 10px;
 }
 
 .card {
-  padding: 13px 14px;
+  position: relative;
+  padding: 15px 16px 16px;
   background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
+  border: 1px solid var(--pose-line);
+  border-radius: 13px;
+  box-shadow: 0 1px 3px rgba(83, 55, 61, 0.035);
+}
+
+.card--pose {
+  border-left: 4px solid var(--powder-blush);
 }
 
 .card--link {
   margin-left: 14px;
-  background: var(--link);
-  border-style: dashed;
+  background: var(--link-bg);
+  border: 2px dotted var(--sweet-peony);
+  box-shadow: none;
 }
 
 .card--context {
-  background: var(--context);
-  border-style: dotted;
+  background: var(--context-bg);
+  border-color: var(--context-line);
+  box-shadow: none;
 }
 
 .card__head {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 8px;
+  justify-content: flex-end;
+  min-height: 18px;
+  margin-bottom: 4px;
 }
 
-.card__kind,
 .card__status {
+  padding: 2px 7px;
+  border: 1px solid rgba(140, 95, 102, 0.24);
+  border-radius: 999px;
   color: var(--muted);
   font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  line-height: 1.3;
   text-transform: uppercase;
 }
 
-.card__status {
-  padding: 3px 6px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  letter-spacing: 0.07em;
-}
-
-.card__sanskrit {
-  font-size: 17px;
-  font-weight: 800;
-  line-height: 1.2;
+.card__names {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 12px 20px;
 }
 
 .card__english {
-  margin-top: 2px;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.22;
+}
+
+.card__sanskrit {
+  max-width: 260px;
+  color: var(--smoky-rose);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: right;
 }
 
 .card--link .card__english,
 .card--context .card__english {
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 750;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.card--link .card__english {
+  color: var(--sweet-peony);
+}
+
+.card--context .card__english {
+  color: #586052;
 }
 
 .card__cue {
-  margin-top: 11px;
-  padding-top: 10px;
-  border-top: 1px solid #eceff2;
-  font-size: 14px;
-  line-height: 1.5;
+  max-width: 68ch;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(140, 95, 102, 0.12);
+  color: #332f30;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.62;
+}
+
+.card--link .card__cue {
+  border-top-color: rgba(203, 118, 158, 0.18);
 }
 
 .card__review {
-  margin-top: 10px;
+  margin-top: 11px;
   color: var(--muted);
   font-size: 11px;
 }
@@ -156,7 +207,7 @@ h1 {
 
 .card__review div {
   margin-top: 6px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .error {
@@ -167,23 +218,43 @@ h1 {
 }
 
 .site-footer {
-  padding: 0 16px 32px;
+  padding: 0 18px 34px;
   color: var(--muted);
   font-size: 11px;
 }
 
-@media (min-width: 760px) {
-  .app { padding: 22px 18px 46px; }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
+@media (max-width: 520px) {
+  .card__names {
+    grid-template-columns: minmax(0, 1fr) minmax(90px, 42%);
+    gap: 10px;
   }
 
-  .card--link,
-  .card--context {
-    grid-column: 1 / -1;
-    margin-left: 0;
+  .card__sanskrit {
+    font-size: 13px;
+  }
+
+  .card__cue {
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 760px) {
+  .app { padding: 24px 18px 52px; }
+
+  .sequence {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 17px 19px 18px;
+  }
+
+  .sequence__title {
+    font-size: 24px;
+  }
+
+  .card__cue {
+    font-size: 16.5px;
   }
 }
