@@ -70,6 +70,53 @@ h1 {
 
 .app { padding: 18px 12px 44px; }
 
+.focus-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 11px 12px;
+  border: 1px solid rgba(140, 95, 102, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 253, 252, 0.9);
+  box-shadow: 0 1px 3px rgba(83, 55, 61, 0.03);
+}
+
+.focus-picker__label {
+  flex: 0 0 auto;
+  color: var(--smoky-rose);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.focus-picker__select {
+  min-width: 0;
+  flex: 1 1 auto;
+  appearance: none;
+  padding: 9px 34px 9px 11px;
+  border: 1px solid rgba(140, 95, 102, 0.28);
+  border-radius: 10px;
+  background-color: #fffdfc;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--smoky-rose) 50%),
+    linear-gradient(135deg, var(--smoky-rose) 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) calc(50% - 2px),
+    calc(100% - 11px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.focus-picker__select:focus-visible {
+  outline: 3px solid rgba(203, 118, 158, 0.2);
+  outline-offset: 2px;
+  border-color: var(--sweet-peony);
+}
+
 .sequence {
   margin-bottom: 24px;
   padding: 13px;
@@ -224,6 +271,16 @@ h1 {
 }
 
 @media (max-width: 520px) {
+  .focus-picker {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .focus-picker__select {
+    width: 100%;
+  }
+
   .card__names {
     grid-template-columns: minmax(0, 1fr) minmax(90px, 42%);
     gap: 10px;
