@@ -72,6 +72,18 @@ export function renderNode(node) {
   return article;
 }
 
+function renderGroup(nodes) {
+  const group = createElement("section", "node-group");
+  group.dataset.groupId = nodes[0].group.id;
+  group.append(createElement("div", "node-group__title", nodes[0].group.title));
+
+  const cards = createElement("div", "node-group__cards");
+  for (const node of nodes) cards.append(renderNode(node));
+  group.append(cards);
+
+  return group;
+}
+
 export function renderSequence(sequence) {
   const section = createElement("section", "sequence");
   section.dataset.sequenceId = sequence.id;
@@ -79,8 +91,22 @@ export function renderSequence(sequence) {
   const title = createElement("h2", "sequence__title", sequence.title);
   const cards = createElement("div", "cards");
 
-  for (const node of sequence.nodes) {
-    cards.append(renderNode(node));
+  for (let index = 0; index < sequence.nodes.length;) {
+    const node = sequence.nodes[index];
+
+    if (!node.group) {
+      cards.append(renderNode(node));
+      index += 1;
+      continue;
+    }
+
+    const groupedNodes = [];
+    const instance = node.group.instance;
+    while (index < sequence.nodes.length && sequence.nodes[index].group?.instance === instance) {
+      groupedNodes.push(sequence.nodes[index]);
+      index += 1;
+    }
+    cards.append(renderGroup(groupedNodes));
   }
 
   section.append(title, cards);
