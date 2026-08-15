@@ -196,9 +196,9 @@ h1 {
 .card__english {
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.22;
+  line-height: 1.2;
 }
 
 .card__sanskrit {
