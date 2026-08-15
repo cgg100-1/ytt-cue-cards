@@ -13,27 +13,81 @@ function slugify(value) {
     .replace(/^-|-$/g, "") || "item";
 }
 
-function normaliseSequence(rawSequence) {
+function interpolate(template, params = {}) {
+  return String(template ?? "").replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (_, key) => {
+    return Object.prototype.hasOwnProperty.call(params, key) ? String(params[key]) : `{{${key}}}`;
+  });
+}
+
+function buildCanonicalMap(rawSequences) {
+  const canonical = new Map();
+
+  for (const sequence of rawSequences) {
+    for (const node of sequence.nodes ?? []) {
+      if (!node.canonicalId) continue;
+      assert(!canonical.has(node.canonicalId), `Duplicate canonical id: ${node.canonicalId}`);
+      canonical.set(node.canonicalId, node);
+    }
+  }
+
+  return canonical;
+}
+
+function resolveRawNode(rawNode, canonical) {
+  if (!rawNode.ref) return rawNode;
+
+  const base = canonical.get(rawNode.ref);
+  assert(base, `Unknown canonical ref: ${rawNode.ref}`);
+
+  return {
+    ...base,
+    ...rawNode,
+    canonicalId: base.canonicalId,
+    type: base.type,
+    sanskrit: base.sanskrit,
+    english: base.english,
+    status: rawNode.status ?? base.status,
+    note: rawNode.note ?? base.note,
+    transcript: rawNode.transcript ?? "",
+    sourceTranscripts: rawNode.sourceTranscripts ?? [],
+    params: { ...(base.params ?? {}), ...(rawNode.params ?? {}) },
+    cue: rawNode.cue ?? base.cue,
+    cueTemplate: rawNode.cueTemplate ?? base.cueTemplate
+  };
+}
+
+function normaliseSequence(rawSequence, canonical) {
   const sequenceId = slugify(rawSequence.title);
   const seenNodeIds = new Map();
 
-  const nodes = rawSequence.nodes.map((rawNode) => {
+  const nodes = rawSequence.nodes.map((sourceNode) => {
+    const rawNode = resolveRawNode(sourceNode, canonical);
     const type = String(rawNode.type ?? "").toLowerCase();
     const label = rawNode.english || rawNode.sanskrit || "Untitled";
     const baseId = `${sequenceId}-${slugify(label)}`;
     const occurrence = (seenNodeIds.get(baseId) ?? 0) + 1;
     seenNodeIds.set(baseId, occurrence);
 
+    const params = rawNode.params ?? {};
+    const cue = rawNode.cueTemplate
+      ? interpolate(rawNode.cueTemplate, params)
+      : interpolate(rawNode.cue ?? rawNode.transcript ?? "", params);
+
     return {
       id: occurrence === 1 ? baseId : `${baseId}-${occurrence}`,
+      canonicalId: rawNode.canonicalId ?? null,
+      ref: sourceNode.ref ?? null,
       type,
       label,
-      cue: rawNode.cue ?? rawNode.transcript ?? "",
+      cue,
       status: String(rawNode.status ?? "").toLowerCase(),
       source: {
         reviewNote: rawNode.note ?? "",
-        transcript: rawNode.transcript ?? "",
-        transcripts: Array.isArray(rawNode.sourceTranscripts) ? rawNode.sourceTranscripts : []
+        transcript: sourceNode.transcript ?? rawNode.transcript ?? "",
+        canonicalTranscript: sourceNode.ref ? (canonical.get(sourceNode.ref)?.transcript ?? "") : "",
+        transcripts: Array.isArray(sourceNode.sourceTranscripts)
+          ? sourceNode.sourceTranscripts
+          : (Array.isArray(rawNode.sourceTranscripts) ? rawNode.sourceTranscripts : [])
       },
       ...(type === "pose" ? {
         pose: {
@@ -79,11 +133,12 @@ export function validateSession(session) {
 export function loadSession() {
   const rawSequences = window.YTT_DATA;
   assert(Array.isArray(rawSequences), "Cue-card source data was not loaded.");
+  const canonical = buildCanonicalMap(rawSequences);
 
   return validateSession({
-    schemaVersion: 1,
+    schemaVersion: 2,
     sessionId: "ytt100-session-1",
     title: "YTT Cue Cards",
-    sequences: rawSequences.map(normaliseSequence)
+    sequences: rawSequences.map((sequence) => normaliseSequence(sequence, canonical))
   });
 }
