@@ -71,9 +71,6 @@ h1 {
 .app { padding: 18px 12px 44px; }
 
 .focus-picker {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin: 0 0 18px;
   padding: 11px 12px;
   border: 1px solid rgba(140, 95, 102, 0.16);
@@ -83,38 +80,48 @@ h1 {
 }
 
 .focus-picker__label {
-  flex: 0 0 auto;
+  margin-bottom: 8px;
   color: var(--smoky-rose);
   font-size: 13px;
   font-weight: 700;
 }
 
-.focus-picker__select {
-  min-width: 0;
-  flex: 1 1 auto;
-  appearance: none;
-  padding: 9px 34px 9px 11px;
-  border: 1px solid rgba(140, 95, 102, 0.28);
-  border-radius: 10px;
-  background-color: #fffdfc;
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--smoky-rose) 50%),
-    linear-gradient(135deg, var(--smoky-rose) 50%, transparent 50%);
-  background-position:
-    calc(100% - 16px) calc(50% - 2px),
-    calc(100% - 11px) calc(50% - 2px);
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  color: var(--text);
-  font: inherit;
-  font-size: 14px;
-  font-weight: 600;
+.focus-picker__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 10px;
 }
 
-.focus-picker__select:focus-visible {
+.focus-picker__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid rgba(140, 95, 102, 0.16);
+  border-radius: 999px;
+  background: #fffdfc;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.focus-picker__option:has(.focus-picker__checkbox:checked) {
+  border-color: rgba(203, 118, 158, 0.45);
+  background: rgba(232, 185, 171, 0.18);
+}
+
+.focus-picker__checkbox {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--sweet-peony);
+}
+
+.focus-picker__checkbox:focus-visible {
   outline: 3px solid rgba(203, 118, 158, 0.2);
   outline-offset: 2px;
-  border-color: var(--sweet-peony);
 }
 
 .sequence {
@@ -271,14 +278,12 @@ h1 {
 }
 
 @media (max-width: 520px) {
-  .focus-picker {
-    align-items: stretch;
-    flex-direction: column;
+  .focus-picker__options {
     gap: 6px;
   }
 
-  .focus-picker__select {
-    width: 100%;
+  .focus-picker__option {
+    font-size: 12.5px;
   }
 
   .card__names {
