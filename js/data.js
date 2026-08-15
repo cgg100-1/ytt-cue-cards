@@ -69,9 +69,13 @@ function normaliseSequence(rawSequence, canonical) {
     seenNodeIds.set(baseId, occurrence);
 
     const params = rawNode.params ?? {};
-    const cue = rawNode.cueTemplate
+    const approvedCue = rawNode.cueTemplate
       ? interpolate(rawNode.cueTemplate, params)
-      : interpolate(rawNode.cue ?? rawNode.transcript ?? "", params);
+      : interpolate(rawNode.cue ?? "", params);
+    const sourceTranscript = interpolate(sourceNode.transcript ?? rawNode.transcript ?? "", params);
+    const cue = String(rawNode.status ?? "").toLowerCase() === "clear" && approvedCue.trim()
+      ? approvedCue
+      : sourceTranscript;
 
     return {
       id: occurrence === 1 ? baseId : `${baseId}-${occurrence}`,
