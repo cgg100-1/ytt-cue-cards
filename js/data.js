@@ -28,9 +28,13 @@ function normaliseSequence(rawSequence) {
       id: occurrence === 1 ? baseId : `${baseId}-${occurrence}`,
       type,
       label,
-      cue: rawNode.transcript ?? "",
+      cue: rawNode.cue ?? rawNode.transcript ?? "",
       status: String(rawNode.status ?? "").toLowerCase(),
-      source: { reviewNote: rawNode.note ?? "" },
+      source: {
+        reviewNote: rawNode.note ?? "",
+        transcript: rawNode.transcript ?? "",
+        transcripts: Array.isArray(rawNode.sourceTranscripts) ? rawNode.sourceTranscripts : []
+      },
       ...(type === "pose" ? {
         pose: {
           sanskrit: rawNode.sanskrit || null,
