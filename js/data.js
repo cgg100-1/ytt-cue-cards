@@ -33,6 +33,58 @@ function buildCanonicalMap(rawSequences) {
   return canonical;
 }
 
+function buildGroupMap(rawGroups) {
+  const groups = new Map();
+
+  for (const group of rawGroups) {
+    assert(group && typeof group.id === "string" && group.id, "Each reusable group needs an id.");
+    assert(typeof group.title === "string" && group.title, `Group ${group.id} needs a title.`);
+    assert(Array.isArray(group.nodes) && group.nodes.length, `Group ${group.id} needs nodes.`);
+    assert(!groups.has(group.id), `Duplicate group id: ${group.id}`);
+    groups.set(group.id, group);
+  }
+
+  return groups;
+}
+
+function expandGroups(rawSequence, groups) {
+  const expanded = [];
+  const groupCounts = new Map();
+
+  for (const sourceNode of rawSequence.nodes ?? []) {
+    if (!sourceNode.groupRef) {
+      expanded.push(sourceNode);
+      continue;
+    }
+
+    const group = groups.get(sourceNode.groupRef);
+    assert(group, `Unknown group ref: ${sourceNode.groupRef}`);
+
+    const occurrence = (groupCounts.get(group.id) ?? 0) + 1;
+    groupCounts.set(group.id, occurrence);
+    const groupInstance = `${group.id}-${occurrence}`;
+    const transcripts = sourceNode.transcripts ?? {};
+
+    for (const groupNode of group.nodes) {
+      const transcriptKey = groupNode.ref ?? groupNode.canonicalId ?? "";
+      expanded.push({
+        ...groupNode,
+        transcript: Object.prototype.hasOwnProperty.call(transcripts, transcriptKey)
+          ? transcripts[transcriptKey]
+          : (groupNode.transcript ?? ""),
+        note: sourceNode.note ?? groupNode.note,
+        __group: {
+          id: group.id,
+          title: group.title,
+          instance: groupInstance
+        }
+      });
+    }
+  }
+
+  return expanded;
+}
+
 function resolveRawNode(rawNode, canonical) {
   if (!rawNode.ref) return rawNode;
 
@@ -56,11 +108,12 @@ function resolveRawNode(rawNode, canonical) {
   };
 }
 
-function normaliseSequence(rawSequence, canonical) {
+function normaliseSequence(rawSequence, canonical, groups) {
   const sequenceId = slugify(rawSequence.title);
   const seenNodeIds = new Map();
+  const sourceNodes = expandGroups(rawSequence, groups);
 
-  const nodes = rawSequence.nodes.map((sourceNode) => {
+  const nodes = sourceNodes.map((sourceNode) => {
     const rawNode = resolveRawNode(sourceNode, canonical);
     const type = String(rawNode.type ?? "").toLowerCase();
     const label = rawNode.english || rawNode.sanskrit || "Untitled";
@@ -81,6 +134,7 @@ function normaliseSequence(rawSequence, canonical) {
       id: occurrence === 1 ? baseId : `${baseId}-${occurrence}`,
       canonicalId: rawNode.canonicalId ?? null,
       ref: sourceNode.ref ?? null,
+      group: sourceNode.__group ?? null,
       type,
       label,
       cue,
@@ -136,13 +190,16 @@ export function validateSession(session) {
 
 export function loadSession() {
   const rawSequences = window.YTT_DATA;
+  const rawGroups = window.YTT_GROUPS ?? [];
   assert(Array.isArray(rawSequences), "Cue-card source data was not loaded.");
+  assert(Array.isArray(rawGroups), "Reusable groups were not loaded.");
   const canonical = buildCanonicalMap(rawSequences);
+  const groups = buildGroupMap(rawGroups);
 
   return validateSession({
-    schemaVersion: 2,
+    schemaVersion: 3,
     sessionId: "ytt100-session-1",
     title: "YTT Cue Cards",
-    sequences: rawSequences.map((sequence) => normaliseSequence(sequence, canonical))
+    sequences: rawSequences.map((sequence) => normaliseSequence(sequence, canonical, groups))
   });
 }
