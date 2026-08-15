@@ -31,36 +31,32 @@ function renderNames(node) {
   return names;
 }
 
-function renderFocusPicker(session, selectedSequenceId, onFocusChange) {
+function renderFocusPicker(session, selectedSequenceIds, onFocusChange) {
   const nav = createElement("nav", "focus-picker");
-  nav.setAttribute("aria-label", "Choose a flow to focus on");
+  nav.setAttribute("aria-label", "Choose flows to focus on");
 
-  const label = createElement("label", "focus-picker__label", "Focus on");
-  label.htmlFor = "flow-focus";
-
-  const select = createElement("select", "focus-picker__select");
-  select.id = "flow-focus";
-
-  const allOption = createElement("option", null, "All flows");
-  allOption.value = "all";
-  select.append(allOption);
+  const label = createElement("div", "focus-picker__label", "Focus on");
+  const options = createElement("div", "focus-picker__options");
 
   for (const sequence of session.sequences) {
-    const option = createElement("option", null, sequence.title);
-    option.value = sequence.id;
-    select.append(option);
+    const option = createElement("label", "focus-picker__option");
+    const checkbox = createElement("input", "focus-picker__checkbox");
+    checkbox.type = "checkbox";
+    checkbox.value = sequence.id;
+    checkbox.checked = selectedSequenceIds.has(sequence.id);
+
+    checkbox.addEventListener("change", () => {
+      const nextSelection = new Set(selectedSequenceIds);
+      if (checkbox.checked) nextSelection.add(sequence.id);
+      else nextSelection.delete(sequence.id);
+      onFocusChange(nextSelection);
+    });
+
+    option.append(checkbox, createElement("span", null, sequence.title));
+    options.append(option);
   }
 
-  const validSelection = selectedSequenceId === "all" || session.sequences.some(
-    (sequence) => sequence.id === selectedSequenceId
-  );
-  select.value = validSelection ? selectedSequenceId : "all";
-
-  select.addEventListener("change", (event) => {
-    onFocusChange(event.target.value);
-  });
-
-  nav.append(label, select);
+  nav.append(label, options);
   return nav;
 }
 
@@ -92,15 +88,13 @@ export function renderSequence(sequence) {
 }
 
 export function renderApp(container, session, options = {}) {
-  const selectedSequenceId = options.selectedSequenceId ?? "all";
+  const selectedSequenceIds = options.selectedSequenceIds ?? new Set(session.sequences.map((sequence) => sequence.id));
   const onFocusChange = options.onFocusChange ?? (() => {});
 
   container.replaceChildren();
-  container.append(renderFocusPicker(session, selectedSequenceId, onFocusChange));
+  container.append(renderFocusPicker(session, selectedSequenceIds, onFocusChange));
 
-  const sequences = selectedSequenceId === "all"
-    ? session.sequences
-    : session.sequences.filter((sequence) => sequence.id === selectedSequenceId);
+  const sequences = session.sequences.filter((sequence) => selectedSequenceIds.has(sequence.id));
 
   for (const sequence of sequences) {
     container.append(renderSequence(sequence));
